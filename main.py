@@ -36,7 +36,6 @@ def Calculation_Similiarity(origin_txt,origin_add_txt):
     total_size = 0
     # 利用jieba.luct进行分词 保存在list列表中
     ori_list = [[word for word in jieba.lcut(sentence)] for sentence in origin_txt]
-
     ori_add_list = [[word for word in jieba.lcut(sentence)] for sentence in origin_add_txt]
 
     # 生成词典
@@ -45,7 +44,7 @@ def Calculation_Similiarity(origin_txt,origin_add_txt):
     # 通过doc2bow稀疏向量生成语料库
     corpus = [dictionary.doc2bow(word) for word in ori_list]
 
-    # 通过TF模型算法，计算出tf值
+    # 通过TF模型算法，算出tf值
     tf = models.TfidfModel(corpus)
 
     # 通过token2id得到特征数（字典里面的键的个数）
@@ -73,13 +72,10 @@ def Calculation_Similiarity(origin_txt,origin_add_txt):
         size += word_size
         # 加入长度列表
         word_lenth.append(word_size)
-
     total_size = size
-
     for i in range(len(word_lenth)):
         total_sum += word_lenth[i] * sim_value[i]
-
     # 加权求平均
     ans = total_sum / total_size
-
+    
     return ans
