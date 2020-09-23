@@ -6,8 +6,7 @@ from gensim import corpora, models, similarities
 
 class NoWord(Exception):
     def __init__(self):
-        print("该文件是空文本")
-        
+        print("该文件是空文本")      
 # 计算相似度
 def Split_sentence(file_txt):
     head = '\u4e00'
@@ -22,7 +21,6 @@ def Split_sentence(file_txt):
             word = ""
         else:
             continue
-
     if word != '':
         sentence_list.append(word)
         word = ''
