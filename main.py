@@ -6,8 +6,7 @@ from gensim import corpora, models, similarities
 
 class NoWord(Exception):
     def __init__(self):
-        print("这个文件是空文本")
-        
+        print("这个文件是空文本")      
 # 计算文章的相似度
 def Split_sentence(file_txt):
     head = '\u4e00'
@@ -22,13 +21,11 @@ def Split_sentence(file_txt):
             word = ""
         else:
             continue
-
     if word != '':
         sentence_list.append(word)
         word = ''
 
     return sentence_list
-
 def Calculation_Similiarity(origin_txt,origin_add_txt):
     sim_value = []
     word_lenth = []
@@ -66,9 +63,7 @@ def Calculation_Similiarity(origin_txt,origin_add_txt):
         size += word_size
         # 加入长度列表
         word_lenth.append(word_size)
-
     total_size = size
-
     for i in range(len(word_lenth)):
         total_sum += word_lenth[i] * sim_value[i]
 
