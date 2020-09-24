@@ -73,12 +73,9 @@ def Calculation_Similiarity(origin_txt,origin_add_txt):
         size += word_size
         # 加入长度列表
         word_lenth.append(word_size)
-
     total_size = size
-
     for i in range(len(word_lenth)):
         total_sum += word_lenth[i] * sim_value[i]
-
     # 加权求平均
     ans = total_sum / total_size
 
